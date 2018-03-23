@@ -16,4 +16,5 @@ The service properties that will be changed are:
 
 NOTE: recycling period is not a supported changeable attribute with this tool
 
+NOTE: multiple selection is limited to within same folder
 
