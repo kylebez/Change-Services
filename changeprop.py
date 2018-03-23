@@ -10,10 +10,9 @@ import formatOptions as forop
 # Defines the entry point into the script
 def main(argv=None):
     
+    serverName = raw_input(" Enter server name (or ip): ")
     username = raw_input(" Enter username: ")
     password = raw_input(" Enter password: ")
-    # Ask for server name
-    serverName = raw_input(" Enter server name (or ip): ")
     serverPort = 6080   
     
     # Get a token
@@ -31,8 +30,7 @@ def main(argv=None):
 
     #Sets the selection scope
     def firstSelect(url,tok):
-        rootservices = None
-        folderservices = None
+        rootservices = None        
         allservices = getCatalog(url, tok)
         if allservices == -1:
             print " FUNCTION ERROR"
@@ -52,6 +50,7 @@ def main(argv=None):
     def secondSelect(fs,url,tok,rs,f):
         global serviceSelect
         global servicelist
+        folderservices = None
         if fs == 1: #root selected
             serviceSelect = getServiceOptions(rs)  
        
@@ -71,7 +70,7 @@ def main(argv=None):
                 secondSelect(fs,url,tok,rs,f)
                 return            
         if folderservices is None:
-            selectedFolder = rootservices
+            selectedFolder = rs
         else:
             selectedFolder = folderservices
         servicelist = map(lambda i: selectedFolder[i-1],serviceSelect)
