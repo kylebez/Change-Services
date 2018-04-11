@@ -18,3 +18,4 @@ NOTE: recycling period is not a supported changeable attribute with this tool
 
 NOTE: multiple selection is limited to within same folder
 
+FormatOptions.py can be used separately to convert a list of string options to a navigable console tree.
