@@ -80,14 +80,17 @@ def main(argv=None):
 
     firstSelect(baseurl, token)          
     
-    properties = enterData() 
+    properties = -1
+    while properties == -1:
+        properties = enterData()     
     
     #print "Services selected: " + serviceSelect   
     
     print "\n Services being modified: "
     for serv in servicelist:
         print " "+serv['folderName']+":"+serv["serviceName"]
-    print "\n"
+    print "\n" 
+    
     for serv in servicelist:
         changed = changeServiceProperties (serverName,serverPort,serv["serviceName"],serv["type"],serv['folderName'],properties,token)
         if changed == 0:
@@ -146,7 +149,9 @@ def enterData():
                 print " Numerical value not entered for values. Please enter again."
 
     print " Setting values to: \n Minimum Instances: "+mnI+"\n Maximum Instances: "+mxI+"\n Maximum time to wait for instance: "+wT+"\n Maximum time instances can be idle: "+iT+"\n Maximum time instances can be used: "+uT+"\n Isolation mode: "+iM
-
+    confirm = raw_input("\n Confirm? Y/N:")
+    if confirm.upper() == "N":
+        return -1
     return {'minInstances':mnI, 'maxInstances':mxI, 'waitTime':wT, 'idleTime':iT, 'usageTime':uT, 'isolationMode':iM}
     
 

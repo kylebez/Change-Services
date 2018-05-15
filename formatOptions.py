@@ -1,4 +1,4 @@
-# Written by Kyle Besiwick
+# Written by Kyle Beswick
 # Function formatting console for user input
 # strs is list of strings to display as options
 # multi is boolean to allow multiple selections
@@ -49,6 +49,8 @@ def getOptionString(strs, multi=False, back=True):
 #handling a multi selection string
 def multiValues(n):
     opts = raw_input("\n Make selection (multiple allowed - comma seperated and/or hyphenated range): ")
+    if opts == 0:
+        return opts
     optsa = []
     opts = opts.split(',')
     for s in opts:
